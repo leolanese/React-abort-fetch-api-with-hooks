@@ -1,0 +1,16 @@
+$fontMedium: 1.2em;
+$fontStandard: 'Courier New', Courier, monospace;
+
+.App {
+  font-family: $fontStandard;
+  text-align: center;
+  font-size: $fontMedium;
+}
+
+a {
+  margin: 0 1em;
+}
+
+li {
+  list-style-type: none;
+}

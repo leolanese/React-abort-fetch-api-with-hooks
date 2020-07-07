@@ -1,4 +1,5 @@
 ## React-seed
+> A react-seed using typescript, routers, SASS and bootstrap (based on create-react-app)
 
 ### Deployment
 

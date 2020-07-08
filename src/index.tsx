@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import Planets from "./Planets";
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
+
+    <Planets />
   </React.StrictMode>,
   document.getElementById('root')
 );

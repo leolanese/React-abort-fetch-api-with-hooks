@@ -1,12 +1,40 @@
-import React from 'react';
+import React, { useState } from "react";
 import { Link, BrowserRouter as Router, Route, Redirect, Switch, useLocation, useHistory, useRouteMatch } from "react-router-dom";
 import { Users, Location, Match } from './resources/objects';
+
+import NewsAbortingRequest from "./NewsAbortingRequest";
+import NewsRequest from "./NewsRequest";
 
 import './App.scss';
 import 'bootstrap/dist/css/bootstrap.css';
 
 
-const LandingPage = () => <h3>Landing Page</h3>;
+const LandingPage = () => {
+  const [showAbort, toggleShowAbort] = useState(false);
+  const [show, toggleShow] = useState(false);
+
+  function toggleAbort() {
+    toggleShowAbort(!showAbort);
+  }
+
+  function toggle() {
+    toggleShow(!show);
+  }
+
+  return (
+    <>
+      <div>
+        {/* you should NOT see the error */}
+        <button type="button" className="btn btn-danger" onClick={toggle}>Toggle View Component (Abort)</button>
+        {showAbort && <NewsAbortingRequest term="c6f13b093e4b429aa4e86d7eff4f42a4" division="bbc-news" />}
+
+        {/* you should see the error: index.js:1 Warning: Can't perform a React state update on an unmounted component... */}
+        <button type="button" className="btn btn-success" onClick={toggle}>Toggle View Component</button>
+        {show && <NewsRequest term="c6f13b093e4b429aa4e86d7eff4f42a4" division="bbc-news" />}
+      </div>
+    </>
+  )
+};
 
 const AboutPage = () => <h3>About Page</h3>;
 
@@ -17,6 +45,7 @@ const PropsPage = ({title}: { title: any }) => <h3>{title}</h3>
 const UsersPage = () => {
   const { pathname } = useLocation();
   const history = useHistory();
+  const [show, toggleShow] = useState(true);
 
   return (
     <>
@@ -65,14 +94,14 @@ const App = () => {
     <section className="App">
       <Router>
         <main>
-          <nav>
-            <ul>
-              <li><Link to="/">Landing</Link></li>
-              <li><Link to="/users">List users</Link></li>
-              <li><Link to="/props-with-render">Props with render</Link></li>
-              <li><Link to="/404">Redirecting to New page</Link></li>
-            </ul>
-          </nav>
+          {/*<nav>*/}
+          {/*  <ul>*/}
+          {/*    <li><Link to="/LandingPage">Landing</Link></li>*/}
+          {/*    <li><Link to="/users">List users</Link></li>*/}
+          {/*    <li><Link to="/props-with-render">Props with render</Link></li>*/}
+          {/*    <li><Link to="/404">Redirecting to New page</Link></li>*/}
+          {/*  </ul>*/}
+          {/*</nav>*/}
 
           {/* Use a <Switch> any time we have multiple routes, but you want only one of them to render at a time */}
           <Switch>

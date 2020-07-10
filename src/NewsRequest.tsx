@@ -5,7 +5,7 @@ export default function NewsRequest(props: any) {
 	const [planets, setPlanets] = useState({});
 
 	async function fetchData() {
-		console.log('props', props)
+		console.log('props', props);
 		const res = await fetch(`https://newsapi.org/v2/top-headlines?sources=${props.division}&apiKey=${props.term}`);
 		res
 			.json()
